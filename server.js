@@ -29,9 +29,9 @@ connection.once('open',()=>{
 
 
 const studentRouter=require("./routes/students.js")
-
-
 app.use("/student",studentRouter); 
+const lecturerRouter=require("./routes/lecturers.js")
+app.use("/lecturer",lecturerRouter); 
 
 app.listen(PORT,()=>{
     console.log(`server is up & PORT is "${PORT}`);
