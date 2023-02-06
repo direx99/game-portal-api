@@ -1,9 +1,9 @@
 const router = require("express").Router();
 let Student = require("../models/Student");
 
-router.route("/add").post((req,res)=>{
+router.route("/").post((req, res) => {
     const firstName = req.body.firstName;
-    const nic = Number(req.body.Number);
+    const nic = Number(req.body.nic);
     const lastName = req.body.lastName;
     const studentId = req.body.studentId;
     const address = req.body.address;
@@ -14,9 +14,9 @@ router.route("/add").post((req,res)=>{
 
 
 
-   
-    
-    const newStudent = new Student ({
+
+
+    const newStudent = new Student({
         firstName,
         lastName,
         studentId,
@@ -28,22 +28,36 @@ router.route("/add").post((req,res)=>{
 
     })
 
-    newStudent.save().then(()=>{
+    newStudent.save().then(() => {
         res.json("student added")
-    }).catch((err)=>{
+    }).catch((err) => {
         console.log(err);
     })
 })
 
 
-router.route("/all").get((req,res)=>{
-    Student.find().then((students)=>{
+router.route("/").get((req, res) => {
+    Student.find().then((students) => {
         res.json(students)
-    }).catch((err)=>{
+    }).catch((err) => {
         console.log(err);
     })
 })
 
+
+router.get('/get/:id', (req, res) => {
+    const userId = req.params.id;
+    
+    Student.findById(userId, (err, user) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      if (!user) {
+        return res.status(404).send('User not found');
+      }
+      res.send(user);
+    });
+  });
 
 
 
