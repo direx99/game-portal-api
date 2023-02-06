@@ -2,11 +2,30 @@ const router = require("express").Router();
 let Student = require("../models/Student");
 
 router.route("/add").post((req,res)=>{
-    const name = req.body.name;
+    const firstName = req.body.firstName;
+    const nic = Number(req.body.Number);
+    const lastName = req.body.lastName;
+    const studentId = req.body.studentId;
+    const address = req.body.address;
+    const telephone = req.body.telephone;
+    const email = req.body.email;
+    const studentStatus = req.body.studentStatus;
+
+
+
+
    
     
     const newStudent = new Student ({
-        name
+        firstName,
+        lastName,
+        studentId,
+        nic,
+        address,
+        telephone,
+        email,
+        studentStatus
+
     })
 
     newStudent.save().then(()=>{
