@@ -2,55 +2,48 @@ const mongoose = require ('mongoose');
 
 const Schema = mongoose.Schema;
 
-const studentSchema = new Schema({
-    firstName:{
+const gameSchema = new Schema({
+    title:{
         type:String,
         required:true
     },
-    lastName:{
+    subTitle:{
         type:String,
         required:true
     },
-    studentId:{
-        type:String,
-        required:true
-    },
-    nic:{
+    
+    reviewsAvg:{
         type:Number,
         required:false
     },
-    address:{
+    reviewsCount:{
+        type:Number,
+        required:false
+    },
+    type:{
         type:String,
         required:true
     },
-    telephone:{
+    image:{
         type:String,
         required:true
     },
-    email:{
+    androidLink:{
+            type:String,
+            required:true
+
+    },
+    gradientColors: {
+        type: [String] 
+      },
+    iosLink:{
         type:String,
         required:true
-    },
-    studentStatus:{
-        type:String,
-        required:true
-    },
-
-
-
-
-
-
+    }
 
 
 })
  
 
-
-
-
-
-
-
-const Student = mongoose.model("Student",studentSchema);
-module.exports=Student;
+const Game = mongoose.model("Game",gameSchema);
+module.exports=Game;

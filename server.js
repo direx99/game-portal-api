@@ -28,8 +28,8 @@ connection.once('open',()=>{
 })
 
 
-const studentRouter=require("./routes/students.js")
-app.use("/student",studentRouter); 
+const gameRouter=require("./routes/games.js")
+app.use("/game",gameRouter); 
 
 
 app.listen(PORT,()=>{
